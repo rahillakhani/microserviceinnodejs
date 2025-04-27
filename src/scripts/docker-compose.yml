@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_NAME=reviews
+      - AWS_ACCESS_KEY_ID=yourkey
+      - AWS_SECRET_ACCESS_KEY=yoursecret
+      - AWS_REGION=yourregion
+      - S3_BUCKET_NAME=yourbucket
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: reviews
+    ports:
+      - '5432:5432'
