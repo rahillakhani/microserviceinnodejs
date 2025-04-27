@@ -1,13 +1,13 @@
 FROM node:18-alpine as build
-WORKDIR /app
-COPY package.json tsconfig.json ./
+WORKDIR /usr/src/app
+COPY package.json tsconfig.json .
 RUN npm install
 COPY src ./src
 RUN npm run build
 
 FROM node:18-alpine
-WORKDIR /app
-COPY --from=build /app/dist ./dist
-COPY package.json ./
+WORKDIR /usr/src/app
+COPY --from=build /usr/src/app/dist ./dist
+COPY package.json .
 RUN npm install --only=production
 CMD ["npm", "start"]

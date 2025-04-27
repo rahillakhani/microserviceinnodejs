@@ -1,9 +1,9 @@
 {
-  "name": "review-system-microservice",
-  "version": "1.0.0",
-  "main": "dist/scripts/run.js",
+  "name": "review-ingestion-service",
+  "version": "1.0.1",
+  "main": "dist/scripts/processFiles.js",
   "scripts": {
-    "start": "node dist/scripts/run.js",
+    "start": "node dist/scripts/processFiles.js",
     "build": "tsc"
   },
   "dependencies": {

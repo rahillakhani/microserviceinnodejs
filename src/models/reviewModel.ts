@@ -1,4 +1,4 @@
-export interface Review {
+export interface ReviewModel {
     hotelId: number;
     platform: string;
     hotelName: string;
