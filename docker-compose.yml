@@ -1,27 +1,25 @@
-version: '3.9'
 services:
-  app:
-    build: src/scripts
+  api:
+    build: .
     environment:
       - DB_HOST=db
       - DB_PORT=5432
       - DB_USER=postgres
       - DB_PASS=postgres
       - DB_NAME=reviews
-      - AWS_ACCESS_KEY_ID=yourkey
-      - AWS_SECRET_ACCESS_KEY=yoursecret
-      - AWS_REGION=yourregion
-      - S3_BUCKET_NAME=yourbucket
+      - AWS_ACCESS_KEY_ID=key_id
+      - AWS_SECRET_ACCESS_KEY=key
+      - AWS_REGION=ap-south-1
+      - S3_BUCKET_NAME=microserviceinnodejs
     depends_on:
       - db
     volumes:
-      - .:/app
+      - .:/usr/src/app
 
   db:
     image: postgres:14
-    restart: always
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: reviews
     ports:
-      - '5432:5432'
+      - "5432:5432"
